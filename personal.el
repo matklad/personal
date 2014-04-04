@@ -49,8 +49,8 @@
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2)))
 
 ;; OCaml
-(if (= 0 (shell-command "opam"))
-    (do
+(if (= 0 (shell-command "which opam"))
+    (progn
         (add-to-list 'load-path
                      (concat
                       (replace-regexp-in-string
