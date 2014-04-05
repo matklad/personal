@@ -6,6 +6,8 @@
                                    base16-theme emmet-mode yasnippet))
 
 (load-theme 'base16-solarized)
+(add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
+
 (require 'hl-line)
 (global-hl-line-mode 0)
 
