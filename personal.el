@@ -38,6 +38,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.hbs?\\'" . web-mode))
 
+(setq js-indent-level 2)
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
