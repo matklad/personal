@@ -29,6 +29,16 @@
 (global-auto-complete-mode t)
 (setq ac-delay 0.05)
 
+;; Confirm closing
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed."
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (save-buffers-kill-emacs)
+    (message "Canceled exit")))
+
+(when (and window-system (eq system-type 'darwin))
+  (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
 ;; Web
 
