@@ -94,4 +94,21 @@
         '(progn (define-key merlin-mode-map (kbd "C-<up>") nil)
                 (define-key merlin-mode-map (kbd "C-<down>") nil)))))
 
+;; Coljure
+
+(defun eval-insert-comment ()
+  "Evaluate form at point and insert it as a comment."
+  (interactive)
+  (let* ((s (cider-last-sexp))
+         (data (cider-eval-sync s))
+         (v (plist-get data :value)))
+    (forward-line 1)
+    (kill-line 1)
+    (insert ";; " v "\n")
+    (forward-line -2)
+    (end-of-line)))
+
+(define-key cider-mode-map [remap cider-eval-last-sexp] 'eval-insert-comment)
+
+
 ;;; personal.el ends here
