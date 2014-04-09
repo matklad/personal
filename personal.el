@@ -29,7 +29,8 @@
       company-tooltip-limit 5)
 (setq completion-auto-help nil)
 (add-hook 'after-init-hook 'global-company-mode)
-(eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
+;; slow =(
+;; (eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
 
 ;; Confirm closing
 (defun ask-before-closing ()
