@@ -25,6 +25,7 @@
 
 ;; Auto-Complete
 (require 'auto-complete)
+(setq completion-auto-help nil)
 (setq ac-auto-start 2
       ac-delay 0.
       ac-quick-help-delay 0.
