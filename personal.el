@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(prelude-require-packages '(tuareg golden-ratio auto-complete ac-nrepl
+(prelude-require-packages '(tuareg golden-ratio company company-cider
                                    base16-theme emmet-mode yasnippet))
 
 (load-theme 'base16-solarized)
@@ -22,16 +22,14 @@
       '("~/.emacs.d/personal/snippets"))
 (yas-global-mode 1)
 
-
 ;; Auto-Complete
-(require 'auto-complete)
+(require 'company)
+(require 'company-cider)
+(setq company-idle-delay t
+      company-tooltip-limit 5)
 (setq completion-auto-help nil)
-(setq ac-auto-start 2
-      ac-delay 0.
-      ac-quick-help-delay 0.
-      ac-dwim t)
-(global-auto-complete-mode t)
-(ac-set-trigger-key "TAB")
+(add-hook 'after-init-hook 'global-company-mode)
+(eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
 
 ;; Confirm closing
 (defun ask-before-closing ()
