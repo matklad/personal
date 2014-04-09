@@ -24,10 +24,13 @@
 
 
 ;; Auto-Complete
-
 (require 'auto-complete)
+(setq ac-auto-start 2
+      ac-delay 0.
+      ac-quick-help-delay 0.
+      ac-dwim t)
 (global-auto-complete-mode t)
-(setq ac-delay 0.05)
+(ac-set-trigger-key "TAB")
 
 ;; Confirm closing
 (defun ask-before-closing ()
