@@ -11,6 +11,7 @@
 (require 'hl-line)
 (global-hl-line-mode 0)
 
+(scroll-bar-mode -1)
 
 (golden-ratio-mode 1)
 
@@ -25,12 +26,10 @@
 ;; Auto-Complete
 (require 'company)
 (require 'company-cider)
-(setq company-idle-delay t
-      company-tooltip-limit 5)
 (setq completion-auto-help nil)
 (add-hook 'after-init-hook 'global-company-mode)
-;; slow =(
-;; (eval-after-load 'company '(add-to-list 'company-backends 'company-cider))
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-cider))
 
 ;; Confirm closing
 (defun ask-before-closing ()
@@ -95,7 +94,7 @@
                 (define-key merlin-mode-map (kbd "C-<down>") nil)))))
 
 ;; Coljure
-
+(require 'cider)
 (defun eval-insert-comment ()
   "Evaluate form at point and insert it as a comment."
   (interactive)
@@ -107,8 +106,7 @@
     (insert ";; " v "\n")
     (forward-line -2)
     (end-of-line)))
-
 (define-key cider-mode-map [remap cider-eval-last-sexp] 'eval-insert-comment)
-
+(add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 
 ;;; personal.el ends here
