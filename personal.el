@@ -101,12 +101,17 @@
   (interactive)
   (let* ((s (cider-last-sexp))
          (data (cider-eval-sync s))
-         (v (plist-get data :value)))
-    (forward-line 1)
-    (kill-line 1)
-    (insert ";; " v "\n")
-    (forward-line -2)
-    (end-of-line)))
+         (v (plist-get data :value))
+         (e (plist-get data :error)))
+    (if v
+        (progn
+          (forward-line 1)
+          (if (string-prefix-p ";;=> " (thing-at-point 'line))
+              (kill-line 1))
+          (insert ";;=> " v "\n")
+          (forward-line -2)
+          (end-of-line)))))
+
 (define-key cider-mode-map [remap cider-eval-last-sexp] 'eval-insert-comment)
 (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 
