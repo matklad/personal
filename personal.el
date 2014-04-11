@@ -26,7 +26,8 @@
 ;; Auto-Complete
 (require 'company)
 (require 'company-cider)
-(setq company-idle-delay t)
+(setq company-idle-delay t
+      company-require-match nil)
 (setq completion-auto-help nil)
 (add-hook 'after-init-hook 'global-company-mode)
 (eval-after-load 'company
