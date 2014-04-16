@@ -116,4 +116,9 @@
 (define-key cider-mode-map [remap cider-eval-last-sexp] 'eval-insert-comment)
 (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 
+;; LaTex
+(require 'org)
+(setq org-format-latex-options
+      (plist-put org-format-latex-options :scale 2.0))
+
 ;;; personal.el ends here
