@@ -8,6 +8,10 @@
 (load-theme 'base16-solarized)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+
 (require 'hl-line)
 (global-hl-line-mode 0)
 
@@ -113,7 +117,7 @@
           (forward-line -2)
           (end-of-line)))))
 
-(define-key cider-mode-map [remap cider-eval-last-sexp] 'eval-insert-comment)
+(define-key cider-mode-map (kbd "C-c e") 'eval-insert-comment)
 (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 
 ;; LaTex
