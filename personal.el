@@ -20,7 +20,7 @@
 (golden-ratio-mode 1)
 
 (require 'whitespace)
-(setq whitespace-line-column 120)
+(setq whitespace-line-column 80)
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
@@ -68,6 +68,8 @@
 
 (add-hook 'prelude-web-mode-hook 'emmet-mode)
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2)))
+(define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-yas)
+
 
 ;; OCaml
 (if (= 0 (shell-command "which opam"))
