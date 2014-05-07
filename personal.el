@@ -2,8 +2,11 @@
 ;;; Commentary:
 
 ;;; Code:
-(prelude-require-packages '(tuareg golden-ratio company company-cider
-                                   base16-theme emmet-mode yasnippet))
+(prelude-require-packages
+ '(tuareg
+   golden-ratio company company-cider
+   base16-theme emmet-mode yasnippet
+   impatient-mode))
 
 (load-theme 'base16-solarized)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
