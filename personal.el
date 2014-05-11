@@ -33,7 +33,7 @@
 ;; Auto-Complete
 (require 'company)
 (require 'company-cider)
-(setq company-idle-delay t
+(setq company-idle-delay .3
       company-require-match nil
       company-dabbrev-downcase nil)
 
