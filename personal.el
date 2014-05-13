@@ -10,7 +10,7 @@
 
 (load-theme 'base16-eighties)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
-(fringe-mode '(8 . nil))
+(fringe-mode '(nil . 0))
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
