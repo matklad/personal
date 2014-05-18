@@ -133,4 +133,10 @@
 (setq org-format-latex-options
       (plist-put org-format-latex-options :scale 2.0))
 
+(require 'prelude-latex)
+(add-hook 'prelude-latex-mode-hook (lambda ()
+                                     (progn
+                                       (flycheck-mode nil)
+                                       (flyspell-mode 't))))
+
 ;;; personal.el ends here
