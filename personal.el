@@ -16,6 +16,8 @@
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse 't)
 
+(setq default-input-method 'russian-computer)
+
 (require 'hl-line)
 (global-hl-line-mode 0)
 
