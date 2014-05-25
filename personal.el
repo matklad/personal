@@ -141,4 +141,6 @@
                                        (flycheck-mode nil)
                                        (flyspell-mode 't))))
 
+(eval-after-load 'flycheck
+  '(setq-default flycheck-disabled-checkers '(tex-chktex tex-lacheck)))
 ;;; personal.el ends here
