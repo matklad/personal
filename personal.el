@@ -8,7 +8,7 @@
    base16-theme emmet-mode yasnippet
    impatient-mode))
 
-(load-theme 'base16-eighties)
+(load-theme 'base16-default)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
 
