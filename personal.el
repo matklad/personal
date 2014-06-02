@@ -143,4 +143,9 @@
 
 (eval-after-load 'flycheck
   '(setq-default flycheck-disabled-checkers '(tex-chktex tex-lacheck)))
+(setq TeX-view-program-selection
+      '((output-pdf "PDF Viewer")))
+
+(setq TeX-view-program-list
+      `(("PDF Viewer" ,(if (eq system-type 'darwin) "open %o" "okular %o"))))
 ;;; personal.el ends here
