@@ -8,7 +8,7 @@
    base16-theme emmet-mode yasnippet
    impatient-mode))
 
-(load-theme 'base16-default)
+(load-theme 'zenburn)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
 
