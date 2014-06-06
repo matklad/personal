@@ -78,6 +78,8 @@
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2)))
 (define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-yas)
 
+(add-to-list 'yank-indent-blacklisted-modes 'coffee-mode)
+
 
 ;; OCaml
 (if (= 0 (shell-command "which opam"))
