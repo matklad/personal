@@ -11,6 +11,7 @@
 (load-theme 'zenburn)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
+(set-face-attribute 'default nil :height 110)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
