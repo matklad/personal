@@ -19,9 +19,6 @@
 
 (setq default-input-method 'russian-computer)
 
-(require 'hl-line)
-(global-hl-line-mode 0)
-
 (scroll-bar-mode -1)
 
 (golden-ratio-mode 1)
@@ -66,6 +63,8 @@
 (add-to-list 'auto-mode-alist '("\\.hbs?\\'" . web-mode))
 
 (setq js-indent-level 2)
+(custom-set-variables '(coffee-tab-width 2))
+
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
@@ -145,7 +144,7 @@
                                        (flyspell-mode 't))))
 
 (eval-after-load 'flycheck
-  '(setq-default flycheck-disabled-checkers '(tex-chktex tex-lacheck)))
+  '(setq-default flycheck-disabled-checkers '(tex-chktex tex-lacheck scss)))
 (setq TeX-view-program-selection
       '((output-pdf "PDF Viewer")))
 
