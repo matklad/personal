@@ -71,6 +71,8 @@
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2))
 
+(setq flycheck-scss-compass nil)
+
 (setq prelude-web-mode-hook 'my-web-mode-hook)
 (add-hook 'prelude-web-mode-hook 'prelude-web-mode-defaults)
 
@@ -144,7 +146,7 @@
                                        (flyspell-mode 't))))
 
 (eval-after-load 'flycheck
-  '(setq-default flycheck-disabled-checkers '(tex-chktex tex-lacheck scss)))
+  '(setq-default flycheck-disabled-checkers '(tex-chktex tex-lacheck)))
 (setq TeX-view-program-selection
       '((output-pdf "PDF Viewer")))
 
