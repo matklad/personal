@@ -21,8 +21,6 @@
 
 (scroll-bar-mode -1)
 
-(golden-ratio-mode 1)
-
 (require 'whitespace)
 (setq whitespace-line-column 80)
 
