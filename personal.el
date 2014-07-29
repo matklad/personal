@@ -78,38 +78,6 @@
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2)))
 (define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-yas)
 
-(add-to-list 'yank-indent-blacklisted-modes 'coffee-mode)
-
-
-;; OCaml
-(if (= 0 (shell-command "which opam"))
-    (progn
-        (add-to-list 'load-path
-                     (concat
-                      (replace-regexp-in-string
-                       "\n$" ""
-                       (shell-command-to-string "opam config var share"))
-                      "/emacs/site-lisp"))
-
-        (let* ((opam-prefix
-                (substring (shell-command-to-string "opam config var prefix") 0 -1)))
-          (with-temp-buffer
-            (insert (shell-command-to-string
-                     (concat opam-prefix
-                             "/bin/ocp-edit-mode emacs -load-global-config")))
-            (eval-buffer)))
-
-      (require 'ocp-indent)
-      (require 'ocp-index)
-      (require 'tuareg)
-      (setq ocp-indent-config "with_never=true")
-
-      (autoload 'merlin-mode "merlin" "Merlin mode" t)
-      (add-hook 'tuareg-mode-hook 'merlin-mode)
-      (add-hook 'caml-mode-hook 'merlin-mode)
-      (eval-after-load 'merlin
-        '(progn (define-key merlin-mode-map (kbd "C-<up>") nil)
-                (define-key merlin-mode-map (kbd "C-<down>") nil)))))
 
 ;; Coljure
 (require 'cider)
