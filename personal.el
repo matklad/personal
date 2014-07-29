@@ -41,6 +41,10 @@
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-cider))
 
+;;Projectile
+(require 'projectile)
+(setq projectile-use-git-grep 't)
+
 ;; Confirm closing
 (defun ask-before-closing ()
   "Ask whether or not to close, and then close if y was pressed."
