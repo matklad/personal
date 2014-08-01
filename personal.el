@@ -58,7 +58,6 @@
 
 ;; Web
 
-(require 'web-mode)
 (require 'prelude-web)
 (require 'emmet-mode)
 
