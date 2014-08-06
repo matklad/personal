@@ -62,6 +62,7 @@
 (require 'emmet-mode)
 
 (add-to-list 'auto-mode-alist '("\\.hbs?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache?\\'" . web-mode))
 
 (setq js-indent-level 2)
 (custom-set-variables '(coffee-tab-width 2))
