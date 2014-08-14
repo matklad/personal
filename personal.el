@@ -125,4 +125,7 @@
 
 (setq TeX-view-program-list
       `(("PDF Viewer" ,(if (eq system-type 'darwin) "open %o" "okular %o"))))
+
+;; Just The Stuff
+(define-key prelude-mode-map (kbd "s-k") 'magit-status)
 ;;; personal.el ends here
