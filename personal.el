@@ -128,4 +128,7 @@
 
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
+
+(add-hook 'prelude-python-mode-hook (lambda () (hs-minor-mode 't)))
+(global-set-key (kbd "<f2>") 'hs-toggle-hiding)
 ;;; personal.el ends here
