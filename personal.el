@@ -129,6 +129,7 @@
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
+(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 (require 'hideshow)
 (add-hook 'prelude-python-mode-hook (lambda () (hs-minor-mode 't)))
