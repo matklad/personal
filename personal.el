@@ -130,6 +130,7 @@
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
 
+(require 'hideshow)
 (add-hook 'prelude-python-mode-hook (lambda () (hs-minor-mode 't)))
 (global-set-key (kbd "<f2>") 'hs-toggle-hiding)
 ;;; personal.el ends here
