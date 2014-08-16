@@ -8,7 +8,6 @@
    base16-theme emmet-mode yasnippet
    impatient-mode))
 
-(load-theme 'zenburn)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
 (set-face-attribute 'default nil :height 110)
