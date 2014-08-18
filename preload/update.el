@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(cd "..")
+(cd "~/.emacs.d/personal")
 (shell-command "git pull")
 
 ;;; update.el ends here
