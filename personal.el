@@ -6,7 +6,7 @@
  '(tuareg
    golden-ratio company company-cider
    base16-theme emmet-mode yasnippet
-   impatient-mode))
+   impatient-mode coffee-mode))
 
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
@@ -59,6 +59,8 @@
 
 ;; Web
 
+
+(require 'coffee-mode)
 (require 'prelude-web)
 (require 'emmet-mode)
 
@@ -131,6 +133,15 @@
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 (require 'hideshow)
+(require 'prelude-python)
 (add-hook 'prelude-python-mode-hook (lambda () (hs-minor-mode 't)))
 (global-set-key (kbd "<f2>") 'hs-toggle-hiding)
+
+(defun open-line-and-scroll ()
+  (interactive
+   (progn
+     (prelude-smart-open-line nil)
+     (recenter))))
+
+(define-key prelude-mode-map (kbd "M-o") 'open-line-and-scroll)
 ;;; personal.el ends here
