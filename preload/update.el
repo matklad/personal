@@ -3,6 +3,6 @@
 
 ;;; Code:
 (cd "~/.emacs.d/personal")
-(shell-command "git pull")
+(call-process-shell-command "git pull")
 
 ;;; update.el ends here
