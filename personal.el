@@ -127,6 +127,18 @@
 (setq TeX-view-program-list
       `(("PDF Viewer" ,(if (eq system-type 'darwin) "open %o" "okular %o"))))
 
+(setq-default TeX-engine 'xetex)
+(setq-default TeX-PDF-mode t)
+
+(defun run-latex ()
+  (interactive)
+  (let ((process (TeX-active-process))) (if process (delete-process process)))
+  (let ((TeX-save-query nil)) (TeX-save-document ""))
+  (TeX-command-menu "LaTeX"))
+
+(add-hook 'LaTeX-mode-hook
+          (lambda () (local-set-key (kbd "C-x C-s") #'run-latex)))
+
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
