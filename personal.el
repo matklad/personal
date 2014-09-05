@@ -136,8 +136,22 @@
   (let ((TeX-save-query nil)) (TeX-save-document ""))
   (TeX-command-menu "LaTeX"))
 
+
+(defun toggle-formula ()
+  (interactive)
+  (if (eq nil (search-forward "$" (+ (point) 10) 't 1))
+      (progn
+        (insert "$$")
+        (backward-char)
+        (deactivate-input-method))
+    (progn
+      (insert " ")
+      (toggle-input-method))))
+
 (add-hook 'LaTeX-mode-hook
-          (lambda () (local-set-key (kbd "C-x C-s") #'run-latex)))
+          (lambda () (progn
+                       (local-set-key (kbd "C-x C-s") #'run-latex)
+                       (local-set-key (kbd "C-c C-f") #'toggle-formula))))
 
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
