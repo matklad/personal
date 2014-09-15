@@ -10,7 +10,7 @@
 
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
-(set-face-attribute 'default nil :height 110)
+(set-frame-font "Ubuntu Mono-12" nil 't)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
@@ -31,10 +31,7 @@
 ;; Auto-Complete
 (require 'company)
 (require 'company-cider)
-(setq company-require-match nil
-      company-dabbrev-downcase nil)
 
-(setq completion-auto-help nil)
 (add-hook 'after-init-hook 'global-company-mode)
 (eval-after-load 'company
   '(progn
@@ -144,9 +141,7 @@
         (insert "$$")
         (backward-char)
         (deactivate-input-method))
-    (progn
-      (insert " ")
-      (toggle-input-method))))
+    (toggle-input-method)))
 
 (add-hook 'LaTeX-mode-hook
           (lambda () (progn
