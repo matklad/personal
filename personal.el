@@ -148,6 +148,10 @@
                        (local-set-key (kbd "C-x C-s") #'run-latex)
                        (local-set-key (kbd "C-c C-f") #'toggle-formula))))
 
+;;C++
+(add-hook 'c++-mode-hook
+          (lambda () (setq flycheck-clang-language-standard "c++11")))
+
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
