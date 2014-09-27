@@ -151,7 +151,7 @@
 ;;C++
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
-
+(setq c-default-style "bsd")
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
