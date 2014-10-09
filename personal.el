@@ -3,10 +3,38 @@
 
 ;;; Code:
 (prelude-require-packages
- '(tuareg
-   golden-ratio company 
-   base16-theme emmet-mode yasnippet
-   impatient-mode coffee-mode))
+ '(base16-theme
+   coffee-mode
+   company
+   emmet-mode
+   golden-ratio
+   hideshow
+   impatient-mode
+   projectile
+   tuareg
+   whitespace
+   yasnippet))
+
+(require 'prelude-c)
+(require 'prelude-clojure)
+(require 'prelude-coffee)
+(require 'prelude-css)
+(require 'prelude-emacs-lisp)
+(require 'prelude-haskell)
+(require 'prelude-helm)
+(require 'prelude-ido)
+(require 'prelude-js)
+(require 'prelude-latex)
+(require 'prelude-lisp)
+(require 'prelude-org)
+(require 'prelude-python)
+(require 'prelude-python)
+(require 'prelude-scala)
+(require 'prelude-scheme)
+(require 'prelude-scss)
+(require 'prelude-web)
+(require 'prelude-web)
+(require 'prelude-xml)
 
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
@@ -20,27 +48,19 @@
 
 (scroll-bar-mode -1)
 
-(require 'whitespace)
 (setq whitespace-line-column 80)
 
-(require 'yasnippet)
 (setq yas-snippet-dirs
       '("~/.emacs.d/personal/snippets"))
 (yas-global-mode 1)
 
-;; Auto-Complete
-(require 'company)
-(require 'company-cider)
-
-(add-hook 'after-init-hook 'global-company-mode)
-(eval-after-load 'company
-  '(progn
-     (add-to-list 'company-backends 'company-cider)
-     (setq company-backends (delete 'company-ropemacs company-backends))))
-
+;; ;; Auto-Complete
+;; (add-hook 'after-init-hook 'global-company-mode)
+;; (eval-after-load 'company
+;;   '(progn
+;;      (setq company-backends (delete 'company-ropemacs company-backends))))
 
 ;;Projectile
-(require 'projectile)
 (setq projectile-use-git-grep 't)
 
 ;; Confirm closing
@@ -55,11 +75,6 @@
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
 ;; Web
-
-
-(require 'coffee-mode)
-(require 'prelude-web)
-(require 'emmet-mode)
 
 (add-to-list 'auto-mode-alist '("\\.hbs?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache?\\'" . web-mode))
@@ -81,8 +96,7 @@
 
 (add-hook 'prelude-web-mode-hook 'emmet-mode)
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2)))
-(define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-yas)
-
+;; (define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-yas)
 
 ;; Coljure
 (require 'cider)
@@ -133,7 +147,6 @@
   (let ((TeX-save-query nil)) (TeX-save-document ""))
   (TeX-command-menu "LaTeX"))
 
-
 (defun toggle-formula ()
   (interactive)
   (if (eq nil (search-forward "$" (+ (point) 10) 't 1))
@@ -157,8 +170,6 @@
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 
-(require 'hideshow)
-(require 'prelude-python)
 (add-hook 'prelude-python-mode-hook (lambda () (hs-minor-mode 't)))
 (global-set-key (kbd "<f2>") 'hs-toggle-hiding)
 
