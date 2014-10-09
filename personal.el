@@ -36,6 +36,7 @@
 (require 'prelude-web)
 (require 'prelude-xml)
 
+(golden-ratio-mode 't)
 (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (fringe-mode '(nil . 0))
 (set-frame-font "Ubuntu Mono-12" nil 't)
