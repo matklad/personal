@@ -4,7 +4,7 @@
 ;;; Code:
 (prelude-require-packages
  '(tuareg
-   golden-ratio company company-cider
+   golden-ratio company 
    base16-theme emmet-mode yasnippet
    impatient-mode coffee-mode))
 
