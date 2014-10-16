@@ -163,10 +163,16 @@
                        (local-set-key (kbd "C-c C-f") #'toggle-formula))))
 
 ;;C++
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
-(setq c-default-style "bsd")
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(defconst my-cc-style
+  '("bsd"
+    (c-offsets-alist . ((innamespace . [0])))))
+(c-add-style "my-cc-style" my-cc-style)
+
+(setq c-default-style "my-cc-style")
 
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
