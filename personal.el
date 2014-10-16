@@ -166,6 +166,8 @@
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
 (setq c-default-style "bsd")
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; Just The Stuff
 (define-key prelude-mode-map (kbd "s-k") 'magit-status)
 (define-key prelude-mode-map (kbd "M-k") 'magit-status)
@@ -181,4 +183,6 @@
      (recenter))))
 
 (define-key prelude-mode-map (kbd "M-o") 'open-line-and-scroll)
+
+(load-file "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 ;;; personal.el ends here
