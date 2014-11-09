@@ -13,7 +13,8 @@
    projectile
    tuareg
    whitespace
-   yasnippet))
+   yasnippet
+   auctex))
 
 (require 'prelude-c)
 (require 'prelude-clojure)
@@ -37,7 +38,10 @@
 (require 'prelude-xml)
 
 (golden-ratio-mode 't)
-(add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
+;; (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
+(setq initial-major-mode 'org-mode)
+(setq initial-buffer-choice 'remember-notes)
+(setq remember-notes-buffer-name "*scratch*")
 (fringe-mode '(nil . 0))
 (set-frame-font "Ubuntu Mono-12" nil 't)
 
@@ -95,6 +99,7 @@
 (setq prelude-web-mode-hook 'my-web-mode-hook)
 (add-hook 'prelude-web-mode-hook 'prelude-web-mode-defaults)
 
+(require 'emmet-mode)
 (add-hook 'prelude-web-mode-hook 'emmet-mode)
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2)))
 ;; (define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-yas)
