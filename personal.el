@@ -43,7 +43,7 @@
 (setq initial-buffer-choice 'remember-notes)
 (setq remember-notes-buffer-name "*scratch*")
 (fringe-mode '(nil . 0))
-(set-frame-font "Ubuntu Mono-12" nil 't)
+(set-frame-font "Ubuntu Mono-13" nil 't)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
