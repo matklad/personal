@@ -37,6 +37,9 @@
 (require 'prelude-web)
 (require 'prelude-xml)
 
+(require 'company)
+(require 'prelude-ocaml)
+
 (golden-ratio-mode 't)
 ;; (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (setq initial-major-mode 'org-mode)
@@ -64,6 +67,7 @@
 ;; (eval-after-load 'company
 ;;   '(progn
 ;;      (setq company-backends (delete 'company-ropemacs company-backends))))
+(setq completion-auto-help nil)
 
 ;;Projectile
 (setq projectile-use-git-grep 't)
@@ -106,24 +110,24 @@
 
 ;; Coljure
 (require 'cider)
-(defun eval-insert-comment ()
-  "Evaluate form at point and insert it as a comment."
-  (interactive)
-  (let* ((s (cider-last-sexp))
-         (data (cider-eval-sync s))
-         (v (plist-get data :value))
-         (e (plist-get data :error)))
-    (if v
-        (progn
-          (forward-line 1)
-          (if (string-prefix-p ";;=> " (thing-at-point 'line))
-              (kill-line 1))
-          (insert ";;=> " v "\n")
-          (forward-line -2)
-          (end-of-line)))))
+;; (defun eval-insert-comment ()
+;;   "Evaluate form at point and insert it as a comment."
+;;   (interactive)
+;;   (let* ((s (cider-last-sexp))
+;;          (data (cider-eval-sync s))
+;;          (v (plist-get data :value))
+;;          (e (plist-get data :error)))
+;;     (if v
+;;         (progn
+;;           (forward-line 1)
+;;           (if (string-prefix-p ";;=> " (thing-at-point 'line))
+;;               (kill-line 1))
+;;           (insert ";;=> " v "\n")
+;;           (forward-line -2)
+;;           (end-of-line)))))
 
-(define-key cider-mode-map (kbd "C-c e") 'eval-insert-comment)
-(add-hook 'clojure-mode-hook 'smartparens-strict-mode)
+;; (define-key cider-mode-map (kbd "C-c e") 'eval-insert-comment)
+;; (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
 
 ;; LaTex
 (require 'org)
@@ -146,16 +150,16 @@
 
 (setq-default TeX-engine 'xetex)
 (setq-default TeX-PDF-mode t)
-
+(require 'prelude-latex)
 (defun run-latex ()
   (interactive)
-  (let ((process (TeX-active-process))) (if process (delete-process process)))
+  ;; (let ((process (TeX-active-process))) (if process (delete-process process)))
   (let ((TeX-save-query nil)) (TeX-save-document ""))
   (TeX-command-menu "LaTeX"))
 
 (defun toggle-formula ()
   (interactive)
-  (if (eq nil (search-forward "$" (+ (point) 10) 't 1))
+  (if (eq nil (search-forward "$" (+ (point) 4) 't 1))
       (progn
         (insert "$$")
         (backward-char)
@@ -196,4 +200,20 @@
 (define-key prelude-mode-map (kbd "M-o") 'open-line-and-scroll)
 
 (load-file "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+
+;; Add opam emacs directory to the load-path
+(setq opam-share
+      (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+(add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+;; Load merlin-mode
+(require 'merlin)
+;; Start merlin on ocaml files
+(add-hook 'tuareg-mode-hook 'merlin-mode t)
+(add-hook 'caml-mode-hook 'merlin-mode t)
+;; Enable auto-complete
+(setq merlin-use-auto-complete-mode 'easy)
+;; Use opam switch to lookup ocamlmerlin binary
+(setq merlin-command 'opam)
+(add-to-list 'company-backends 'merlin-company-backend)
+(add-hook 'merlin-mode-hook 'company-mode)
 ;;; personal.el ends here
