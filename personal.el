@@ -14,7 +14,8 @@
    tuareg
    whitespace
    yasnippet
-   auctex))
+   auctex
+   fish-mode))
 
 (require 'prelude-c)
 (require 'prelude-clojure)
@@ -174,7 +175,7 @@
 ;;C++
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c++-mode-hook
-          (lambda () (setq flycheck-clang-language-standard "c++11")))
+          (lambda () (setq flycheck-clang-language-standard "c++14")))
 
 (defconst my-cc-style
   '("bsd"
