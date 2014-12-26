@@ -35,7 +35,6 @@
 (require 'prelude-scheme)
 (require 'prelude-scss)
 (require 'prelude-web)
-(require 'prelude-web)
 (require 'prelude-xml)
 
 (require 'company)
@@ -47,7 +46,7 @@
 (setq initial-buffer-choice 'remember-notes)
 (setq remember-notes-buffer-name "*scratch*")
 (fringe-mode '(nil . 0))
-(set-frame-font "Ubuntu Mono-13" nil 't)
+(set-frame-font "Ubuntu Mono-14" nil 't)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
@@ -91,7 +90,10 @@
 (add-to-list 'auto-mode-alist '("\\.dtl?\\'" . web-mode))
 
 (setq js-indent-level 2)
-(custom-set-variables '(coffee-tab-width 2))
+
+(custom-set-variables '(coffee-tab-width 2)
+                      '(js2-basic-offset 2))
+
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."

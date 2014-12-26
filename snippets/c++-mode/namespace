@@ -3,7 +3,8 @@
 # key: ns
 # binding: direct-keybinding
 # --
-
 namespace $1 {
+
 $0
+
 } // namespace $1
