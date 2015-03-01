@@ -15,7 +15,9 @@
    whitespace
    yasnippet
    auctex
-   fish-mode))
+   fish-mode
+   glsl-mode
+   ess))
 
 (require 'prelude-c)
 (require 'prelude-clojure)
@@ -24,6 +26,7 @@
 (require 'prelude-emacs-lisp)
 (require 'prelude-haskell)
 (require 'prelude-helm)
+(require 'prelude-helm-everywhere)
 (require 'prelude-ido)
 (require 'prelude-js)
 (require 'prelude-latex)
@@ -40,13 +43,19 @@
 (require 'company)
 (require 'prelude-ocaml)
 
+(setq default-frame-alist '((font . "Ubuntu Mono-14")
+                            (left-fringe . nil)
+                            (right-fringe . 0)
+                            (cursor-color . "#FFFFFF")))
+
+(add-hook 'after-make-frame-functions
+ (lambda (frame) (select-frame-set-input-focus frame)))
+
 (golden-ratio-mode 't)
-;; (add-to-list 'default-frame-alist '(cursor-color . "#eee8d5"))
 (setq initial-major-mode 'org-mode)
 (setq initial-buffer-choice 'remember-notes)
 (setq remember-notes-buffer-name "*scratch*")
-(fringe-mode '(nil . 0))
-(set-frame-font "Ubuntu Mono-14" nil 't)
+
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
@@ -61,6 +70,9 @@
 (setq yas-snippet-dirs
       '("~/.emacs.d/personal/snippets"))
 (yas-global-mode 1)
+
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-word-mode)
 
 ;; ;; Auto-Complete
 ;; (add-hook 'after-init-hook 'global-company-mode)
@@ -92,7 +104,8 @@
 (setq js-indent-level 2)
 
 (custom-set-variables '(coffee-tab-width 2)
-                      '(js2-basic-offset 2))
+                      '(js2-basic-offset 2)
+                      '(js2-strict-missing-semi-warning nil))
 
 
 (defun my-web-mode-hook ()
@@ -201,6 +214,45 @@
      (recenter))))
 
 (define-key prelude-mode-map (kbd "M-o") 'open-line-and-scroll)
+
+(defun point-in-string-p (pt)
+  "Returns t if PT is in a string"
+  (eq 'string (syntax-ppss-context (syntax-ppss pt))))
+
+
+(defun beginning-of-string ()
+  "Moves to the beginning of a syntactic string"
+  (interactive)
+  (unless (point-in-string-p (point))
+    (error "You must be in a string for this command to work"))
+  (while (point-in-string-p (point))
+    (forward-char -1))
+  (point))
+
+(defun swap-quotes ()
+  "Swaps the quote symbols in a \\[python-mode] string"
+  (interactive)
+  (save-excursion
+    (let ((bos (save-excursion
+                 (beginning-of-string)))
+          (eos (save-excursion
+                 (beginning-of-string)
+                 (forward-sexp)
+                 (point)))
+          (replacement-char ?\'))
+      (goto-char bos)
+      ;; if the following character is a single quote then the
+      ;; `replacement-char' should be a double quote.
+      (when (eq (following-char) ?\')
+        (setq replacement-char ?\"))
+      (delete-char 1)
+      (insert replacement-char)
+      (goto-char eos)
+      (delete-char -1)
+      (insert replacement-char))))
+
+(define-key prelude-mode-map (kbd "C-c '") 'swap-quotes)
+
 
 (load-file "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
 
