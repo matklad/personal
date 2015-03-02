@@ -58,9 +58,9 @@
 (setq remember-notes-buffer-name "*scratch*")
 
 
-;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-;; (setq mouse-wheel-progressive-speed nil)
-;; (setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
 
 (setq default-input-method 'russian-computer)
 
