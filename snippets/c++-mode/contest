@@ -3,17 +3,28 @@
 # key: contest
 # binding: direct-keybinding
 # --
-
+#include <array>
+#include <algorithm>
+#include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cassert>
+
+const std::string task_name = "$1";
 
 
-int main() {
-    std::string task = "$1";
+template<typename Cont>
+void print_all(Cont c) {
+    for_each(begin(c), end(c), [](typename Cont::value_type x)
+             { std::cerr << x << " "; });
+    std::cerr << std::endl;
+}
 
-    std::ifstream in_f(task + ".in");
-    std::ofstream out_f(task + ".in");
+int main()
+{
+    std::ifstream in_f(task_name + ".in");
+    std::ofstream out_f(task_name + ".out");
 
     return 0;
 }

@@ -17,7 +17,8 @@
    auctex
    fish-mode
    glsl-mode
-   ess))
+   ess
+   smooth-scrolling))
 
 (require 'prelude-c)
 (require 'prelude-clojure)
@@ -39,9 +40,9 @@
 (require 'prelude-scss)
 (require 'prelude-web)
 (require 'prelude-xml)
-
 (require 'company)
 (require 'prelude-ocaml)
+(require 'smooth-scrolling)
 
 (setq default-frame-alist '((font . "Ubuntu Mono-14")
                             (left-fringe . nil)
@@ -57,9 +58,9 @@
 (setq remember-notes-buffer-name "*scratch*")
 
 
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-follow-mouse 't)
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+;; (setq mouse-wheel-progressive-speed nil)
+;; (setq mouse-wheel-follow-mouse 't)
 
 (setq default-input-method 'russian-computer)
 
@@ -271,4 +272,5 @@
 (setq merlin-command 'opam)
 (add-to-list 'company-backends 'merlin-company-backend)
 (add-hook 'merlin-mode-hook 'company-mode)
+
 ;;; personal.el ends here
